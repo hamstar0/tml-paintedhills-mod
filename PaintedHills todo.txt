@@ -1,0 +1,5 @@
+v1
+-	Add per-tile color restrictions (use a dictionary via config)
+
+-	Implement stuff ...
+-	Setup project
