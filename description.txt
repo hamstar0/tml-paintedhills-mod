@@ -1,1 +1,3 @@
+(Note: Old mod; will replace.)
+
 Allows generating worlds with painted terrain. Enjoy uniquely-hued environs that now stand apart from one another.

@@ -1,5 +1,5 @@
 author = hamstar
-version = 1.0.1
+version = 1.0.1.3
 displayName = Painted Hills
 modReferences = HamstarHelpers
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*

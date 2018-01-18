@@ -10,7 +10,7 @@ namespace PaintedHills {
 		public static PaintedHillsMod Instance { get; private set; }
 
 		public static string GithubUserName { get { return "hamstar0"; } }
-		public static string GithubProjectName { get { return "tml-painthills-mod"; } }
+		public static string GithubProjectName { get { return "tml-paintedhills-mod"; } }
 
 		public static string ConfigFileRelativePath {
 			get { return JsonConfig<PaintedHillsConfig>.RelativePath + Path.DirectorySeparatorChar + PaintedHillsConfig.ConfigFileName; }

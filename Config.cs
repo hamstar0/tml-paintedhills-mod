@@ -8,7 +8,7 @@ using Terraria.ID;
 namespace PaintedHills {
 	public class PaintedHillsConfig : ConfigurationDataBase {
 		public readonly static Version CurrentVersion = new Version( 1, 0, 0 );
-		public static string ConfigFileName { get { return "Rewards Config.json"; } }
+		public static string ConfigFileName { get { return "PaintedHills Config.json"; } }
 
 
 		public string VersionSinceUpdate = "";
