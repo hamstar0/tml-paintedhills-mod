@@ -1,5 +1,40 @@
-v1
--	Add per-tile color restrictions (use a dictionary via config)
+Future
+-	Add area painter
+	-	Surfaces-only
+-	Add shape painters
+	-	Veins
+v1.1
+-	Release as non-WIP
+-	Add themes
+-	Add point painters
+	-	Blend (takes a 'strength' value to indicate pushiness)
+	-	Spray (takes a set of alternate color)
+-	Add area painter
+	-	Stripes (takes an alternate color)
+-	Implement base shape parameters
+	-	Tile types blacklist
+	-	Tile types whitelist
+	-	Tile types to originate on
+	-	Map % region to originate on
+	-	Quantity
+	-	Stop upon air
+	-	Snapping to edges
+-	Add base shape painter
+	-	Flood with max distance
+-	Set blobs to have 'stretch' min and max and angle min and max parameters
+-	Set trees to get painted
+-	Set background walls to get painted
+-	Create 'Tile Classifications'
 
+v1
+-	Release as WIP
 -	Implement stuff ...
 -	Setup project
+
+
+
+
+@Plan
+-	Themes are config files indicating how coloring is applied to a biome
+-	Themes are stored in a config file subfolder by name
+-	Themes are a list of shapes, and their order of application

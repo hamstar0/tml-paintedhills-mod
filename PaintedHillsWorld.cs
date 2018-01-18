@@ -1,7 +1,5 @@
-﻿using HamstarHelpers.TileHelpers;
-using PaintedHills.Colorers;
+﻿using PaintedHills.Colorers;
 using PaintedHills.Painters;
-using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Generation;
@@ -13,9 +11,9 @@ namespace PaintedHills {
 	class PaintedHillsWorld : ModWorld {
 		public override void ModifyWorldGenTasks( List<GenPass> tasks, ref float totalWeight ) {
 			var mymod = (PaintedHillsMod)this.mod;
-			float size = mymod.Config.Data.HueBlobMinimumTileRadius;
-			float size_variance = mymod.Config.Data.HueBlobSizeVariance;
-			float shape_variance = mymod.Config.Data.HueBlobShapeVariance;
+			float size = mymod.Config.HueBlobMinimumTileRadius;
+			float size_variance = mymod.Config.HueBlobSizeVariance;
+			float shape_variance = mymod.Config.HueBlobShapeVariance;
 			int idx = tasks.FindIndex( genpass => genpass.Name.Equals( "Micro Biomes" ) );
 
 			if( idx != -1 ) {
@@ -24,9 +22,9 @@ namespace PaintedHills {
 
 					float chunk_size = 300f * 300f;
 					float chunks = ((float)Main.maxTilesX * (float)Main.maxTilesY) / chunk_size;
-					chunks *= mymod.Config.Data.HueBlobQuantityMultiplier;
+					chunks *= mymod.Config.HueBlobQuantityMultiplier;
 
-					if( (mymod.DEBUGFLAGS & 1) != 0 ) {
+					if( mymod.IsDebugModeInfo() ) {
 						ErrorLogger.Log( "chunks: " + chunks );
 					}
 
@@ -39,7 +37,7 @@ namespace PaintedHills {
 						huemap.FindRandomTile( out x, out y );
 						colorer.SetHue( hue );
 
-						if( (mymod.DEBUGFLAGS & 1) != 0 ) {
+						if( mymod.IsDebugModeInfo() ) {
 							ErrorLogger.Log( "  painting blob ("+(i+1)+" of "+chunks+"): " + x + ", " + y + " " + ColorPicker.GetName(hue) );
 						}
 

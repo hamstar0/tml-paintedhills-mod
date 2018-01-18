@@ -49,7 +49,7 @@ namespace PaintedHills.Painters {
 
 		
 		public static void PaintRadiation( PaintedHillsMod mymod, Colorer colorer, int tile_x, int tile_y, IDictionary<float, float> ray_rads_and_lengths ) {
-			float steps = mymod.Config.Data.HueBlobMinimumTileRadius;
+			float steps = mymod.Config.HueBlobMinimumTileRadius;
 			var rays = new SortedSet<float>( ray_rads_and_lengths.Keys );
 
 			for( int i=0; i < 60; i++ ) {

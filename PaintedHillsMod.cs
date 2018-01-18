@@ -1,14 +1,40 @@
-﻿using HamstarHelpers.MiscHelpers;
-using HamstarHelpers.Utilities.Config;
+﻿using HamstarHelpers.Utilities.Config;
 using System;
+using System.IO;
+using Terraria;
 using Terraria.ModLoader;
 
 
 namespace PaintedHills {
     public class PaintedHillsMod : Mod {
-		public JsonConfig<ConfigurationData> Config { get; private set; }
-		public int DEBUGFLAGS { get; private set; } // +1: info
+		public static PaintedHillsMod Instance { get; private set; }
 
+		public static string GithubUserName { get { return "hamstar0"; } }
+		public static string GithubProjectName { get { return "tml-painthills-mod"; } }
+
+		public static string ConfigFileRelativePath {
+			get { return JsonConfig<PaintedHillsConfig>.RelativePath + Path.DirectorySeparatorChar + PaintedHillsConfig.ConfigFileName; }
+		}
+		public static void ReloadConfigFromFile() {
+			if( Main.netMode != 0 ) {
+				throw new Exception( "Cannot reload configs outside of single player." );
+			}
+			if( PaintedHillsMod.Instance != null ) {
+				if( !PaintedHillsMod.Instance.JsonConfig.LoadFile() ) {
+					PaintedHillsMod.Instance.JsonConfig.SaveFile();
+				}
+			}
+		}
+
+
+
+		////////////////
+
+		public JsonConfig<PaintedHillsConfig> JsonConfig { get; private set; }
+		public PaintedHillsConfig Config { get { return this.JsonConfig.Data; } }
+
+
+		////////////////
 
 		public PaintedHillsMod() {
 			this.Properties = new ModProperties() {
@@ -16,33 +42,42 @@ namespace PaintedHills {
 				AutoloadGores = true,
 				AutoloadSounds = true
 			};
-			this.DEBUGFLAGS = 0;
 
 			string filename = "Painted Hills Config.json";
-			this.Config = new JsonConfig<ConfigurationData>( filename, "Mod Configs", new ConfigurationData() );
+			this.JsonConfig = new JsonConfig<PaintedHillsConfig>( filename, "Mod Configs", new PaintedHillsConfig() );
 		}
 
 
 		public override void Load() {
+			PaintedHillsMod.Instance = this;
+
+			var hamhelpmod = ModLoader.GetMod( "HamstarHelpers" );
+			if( hamhelpmod.Version < new Version( 1, 0, 12 ) ) {
+				throw new Exception( "Hamstar's Helpers must be version " + hamhelpmod.Version.ToString() + " or greater." );
+			}
+
 			this.LoadConfig();
 		}
 
 		private void LoadConfig() {
-			try {
-				if( !this.Config.LoadFile() ) {
-					this.Config.SaveFile();
-				}
-			} catch( Exception e ) {
-				DebugHelpers.Log( e.Message );
-				this.Config.SaveFile();
+			if( !this.JsonConfig.LoadFile() ) {
+				this.JsonConfig.SaveFile();
 			}
 
-			if( this.Config.Data.UpdateToLatestVersion() ) {
-				ErrorLogger.Log( "Painted Hills updated to " + ConfigurationData.CurrentVersion.ToString() );
-				this.Config.SaveFile();
+			if( this.Config.UpdateToLatestVersion() ) {
+				ErrorLogger.Log( "Painted Hills updated to " + PaintedHillsConfig.CurrentVersion.ToString() );
+				this.JsonConfig.SaveFile();
 			}
+		}
 
-			this.DEBUGFLAGS = this.Config.Data.DEBUGFLAGS;
+		public override void Unload() {
+			PaintedHillsMod.Instance = null;
+		}
+
+		////////////////
+
+		public bool IsDebugModeInfo() {
+			return (this.Config.DEBUGFLAGS & 1) != 0;
 		}
 	}
 }
