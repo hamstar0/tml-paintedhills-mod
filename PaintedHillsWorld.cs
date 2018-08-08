@@ -24,7 +24,7 @@ namespace PaintedHills {
 					float chunks = ((float)Main.maxTilesX * (float)Main.maxTilesY) / chunk_size;
 					chunks *= mymod.Config.HueBlobQuantityMultiplier;
 
-					if( mymod.IsDebugModeInfo() ) {
+					if( mymod.Config.DebugModeInfo ) {
 						ErrorLogger.Log( "chunks: " + chunks );
 					}
 
@@ -37,7 +37,7 @@ namespace PaintedHills {
 						huemap.FindRandomTile( out x, out y );
 						colorer.SetHue( hue );
 
-						if( mymod.IsDebugModeInfo() ) {
+						if( mymod.Config.DebugModeInfo ) {
 							ErrorLogger.Log( "  painting blob ("+(i+1)+" of "+chunks+"): " + x + ", " + y + " " + ColorPicker.GetName(hue) );
 						}
 

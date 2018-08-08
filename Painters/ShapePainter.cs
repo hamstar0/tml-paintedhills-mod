@@ -1,7 +1,5 @@
-﻿using HamstarHelpers.Utilities.Config;
-using PaintedHills.Colorers;
+﻿using PaintedHills.Colorers;
 using System.Collections.Generic;
-using Terraria.ModLoader;
 
 
 namespace PaintedHills.Painters {

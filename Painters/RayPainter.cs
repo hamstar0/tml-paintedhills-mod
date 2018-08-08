@@ -3,7 +3,7 @@ using PaintedHills.Colorers;
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.ModLoader;
+
 
 namespace PaintedHills.Painters {
 	public static class RayPainter {

@@ -1,4 +1,4 @@
-﻿using HamstarHelpers.TileHelpers;
+﻿using HamstarHelpers.Helpers.TileHelpers;
 using System;
 using System.Collections.Generic;
 using Terraria;

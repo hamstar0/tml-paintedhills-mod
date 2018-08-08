@@ -1,4 +1,4 @@
-﻿using HamstarHelpers.TileHelpers;
+﻿using HamstarHelpers.Helpers.TileHelpers;
 using PaintedHills.Colorers;
 using System;
 using System.Collections.Generic;

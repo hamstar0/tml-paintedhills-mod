@@ -3,6 +3,9 @@ Future
 	-	Surfaces-only
 -	Add shape painters
 	-	Veins
+v1.2
+-	Add blacklisted tiles
+
 v1.1
 -	Release as non-WIP
 -	Add themes
