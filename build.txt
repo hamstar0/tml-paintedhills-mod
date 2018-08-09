@@ -1,8 +1,7 @@
 author = hamstar
 version = 1.0.2
 displayName = Painted Hills
-modReferences = HamstarHelpers@2.0.1
+modReferences = HamstarHelpers@2.0.2
 buildIgnore = *.csproj, *.user, *.bat, obj\*, bin\*, .vs\*, .git\*
-includePDB = true
 languageVersion = 6
 homepage = https://forums.terraria.org/index.php?threads/painted-hills-tie-dye-your-worlds.60817/
